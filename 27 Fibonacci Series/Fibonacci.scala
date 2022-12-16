@@ -19,32 +19,22 @@ object Fibonacci{
 
     }//using while loop ends here
 
-    def fiboDeepRecursion(val1 : Int, val2 : Int, n : Int){
-        if(n < 1 ){
-            println("\nEnding Now");
-        }
-        else{
-            var tempVal : Int = val1 + val2;
-            print("\t"+tempVal);
-            fiboDeepRecursion(val2, tempVal, n-1);
-        }
-    }// deep recursion method ends here
 
-    def fiboTailRecursion(val1 : Int, val2 : Int, n : Int){
+    def fiboTailRecursion(val1 : Int, val2 : Int, n : Int)  ={
 
         @tailrec
-        def fiboTail(acc : String, val1 : Int, val2 : Int, n : Int)
+        def fiboTail(acc : List[Int], val1 : Int, val2 : Int, n : Int): List[Int] =
         {
+
             if(n < 1 ){
-                println("\n"+acc);
+                acc
             }
             else{
-                var tempVal : Int = val1 + val2;
-                print("\t"+tempVal);
-                fiboTail(acc,val2, tempVal, n-1);
+                 val nextValue = val1 + val2;
+                fiboTail(acc :+ nextValue, val2, nextValue, n-1);
             }
         }
-        fiboTail("Ending Tail Recursion", val1, val2, n);
+        println(fiboTail(List(), val1, val2, n))
 
     }
 
@@ -60,8 +50,6 @@ object Fibonacci{
         {
             println("\nFibonacci series upto "+inputN+" using While Loop");
             fiboWhile(inputN);
-            println("\nFibonacci series upto "+inputN+" using Deep Recursion");
-            fiboDeepRecursion(0, 1, inputN);
             println("\nFibonacci series upto "+inputN+" using Tail Recursion");
             fiboTailRecursion(0, 1, inputN);
         }

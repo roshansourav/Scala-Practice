@@ -1,10 +1,12 @@
+//99-08 Eliminate consecutive duplicates of list elements. 
+
 import scala.annotation.tailrec;
 
 object Consecutive{
 
-    def eleminateConsecutive(myList: List[Any]): List[Any] = {
+    def eleminateConsecutive(myList: List[Int]): List[Int] = {
         @tailrec 
-        def elimRec(lst1: List[Any], stack: List[Any]): List[Any] = {
+        def elimRec(lst1: List[Int], stack: List[Int]): List[Int] = {
             (lst1, stack) match {
             case (Nil, s) => s
             case (hd :: tl, Nil) => elimRec(tl, List(hd))
@@ -17,8 +19,8 @@ object Consecutive{
 }
 
     def main(ags : Array[String]){
-        val lst : List[Any] = List(5, 5, 6, 34, 34, 23, 23, 89, 26, 877, 90, 90);
-        println("\nAfter eliminating\n"+eleminateConsecutive(lst));
+        val lst : List[Int] = List(5, 5, 6, 34, 34, 23, 23, 89, 26, 877, 90, 90)
+        println("\nAfter eliminating\n"+eleminateConsecutive(lst))
 
     }
 }
